@@ -1,0 +1,7 @@
+Usage:
+
+1. Install `k6`.
+2. Start your rails server from `./importmapper`
+3. `k6 run script.js --insecure-skip-tls-verify`
+
+You may need to modify the URL in `script.js`.

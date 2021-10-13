@@ -4,15 +4,17 @@ export let options = {
   scenarios: {
     contacts: {
       executor: 'per-vu-iterations',
-      vus: 6,
+      vus: 6, // 6 connections per domain in HTTP 1
       iterations: 1,
       maxDuration: '1h30m',
     },
   },
 };
 
+// A little jank - is there a better way to get the URL from rails into this script?
 export default function () {
-  for (let step = 1; step <= 25; step++) {
-    http.get('https://localhost:9292/js/example_1.js');
+  // The number of downloads here is based on real numbers from a 7+ year old Rails app
+  for (let step = 1; step <= 200; step++) { // 1200 total downloads of a ~30kb file.
+    http.get('http://localhost:3000/assets/es-module-shims.min-fb6f777d3001ba8b2a4d89d3b4c33deeb216fcdd610d55eb876ea72ad5ba50ef.js');
   }
 }
